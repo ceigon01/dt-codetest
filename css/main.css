@@ -1,0 +1,27 @@
+#banner{
+    background-color:#02599E;
+    padding-top:10px;
+    padding-bottom:10px;
+}
+#banner > img{
+    margin-left:20px;
+}
+input{
+    width:100%;
+}
+
+.container,.wrapper{
+    border:1px solid #eee;
+    padding:20px;
+}
+.wrapper{
+    border:none !important;
+    padding-top:0px;
+}
+.container .row{
+    border-bottom:1px solid #eee;
+    border-right:1px solid #eee;
+}
+.container .row div:nth-child(2){
+    background-color:#eee;
+}
