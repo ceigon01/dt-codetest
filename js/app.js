@@ -30,6 +30,8 @@ String.prototype.matchAll = function(regexp) {
             var outputString = "";
             var allNonAlphaCharsIndexArray = [];
             var allNonAlphaCharsInputArray = [];
+            this.modifiedWords = [];
+
             if(this.output.matchAll(this.matchAllNonAlphaRegexp) ) {
                 var allNonAlphaChars = this.output.matchAll(this.matchAllNonAlphaRegexp);
                 for(i = 0; i < allNonAlphaChars.length; i++){
@@ -39,16 +41,17 @@ String.prototype.matchAll = function(regexp) {
                 this.delemiterLocationsInString = allNonAlphaCharsIndexArray;
                 this.delemiterInputsInString = allNonAlphaCharsInputArray;
 
-                this.modifiedWords = [];
                 this.words = this.output.split(this.nonAlphaRegexp);
                 for(var i = 0; i < this.words.length; i++) {
                     this.modifiedWords.push(this.modifyWord(this.words[i]));
                 }
+
+                for(i = 0; i < this.modifiedWords.length;i++){
+                    outputString += this.modifiedWords[i]+
+                        ((this.delemiterInputsInString[i])?this.delemiterInputsInString[i]:"");
+                }
             }
-            for(i = 0; i < this.modifiedWords.length;i++){
-                outputString += this.modifiedWords[i]+
-                    ((this.delemiterInputsInString[i])?this.delemiterInputsInString[i]:"");
-            }
+
             return outputString;
         };
         this.modifyWord = function(output){
